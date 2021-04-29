@@ -1,0 +1,94 @@
+package poo2;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class POO2 {
+
+    public static void main(String[] args) {
+        ArrayList<Materia> ListaMaterias = new ArrayList<>();
+        int opc;
+        do {
+            System.out.println("[1]Ingresar la materia a programar"
+                    + "\n[2]Imprimir el horario"
+                    + "\n[3]Buscar Materia por nombre"
+                    + "\n[4]Buscar Materia por Horario"
+                    + "\n[5]Imprimir lista de tareas"
+                    + "\n[6]salir");
+            opc = new Scanner(System.in).nextInt();
+            switch (opc) {
+                case 1:
+                    Materia m = new Materia();
+                    String Nombre;
+                    String Salon;
+                    String Profesor;
+                    double calf;
+                    int Hora;
+                    String tarea;
+                    String dia;
+                    System.out.println("Ingrese Nombre de la materia");
+                    Nombre = new Scanner(System.in).next();
+                    m.setNombre(Nombre);
+                    System.out.println("Ingrese Hora de la materia");
+                    Hora = new Scanner(System.in).nextInt();
+                    m.setHora(Hora);
+                    System.out.println("Ingrese Dia de la materia");
+                    dia = new Scanner(System.in).next();
+                    m.setDia(dia);
+                    //
+                    System.out.println("Ingrese el Salon");
+                    Salon = new Scanner(System.in).next();
+                    m.setSalon(Salon);
+                    System.out.println("Ingrese Nombre del Profesor");
+                    Profesor = new Scanner(System.in).next();
+                    m.setProfesor(Profesor);
+                    System.out.println("Ingrese la Calificacion 1");
+                    calf = new Scanner(System.in).nextDouble();
+                    m.setCalificacion1(calf);
+                    System.out.println("Ingrese la Calificacion 1");
+                    calf = new Scanner(System.in).nextDouble();
+                    m.setCalificacion2(calf);
+                    System.out.println("Ingrese fla Calificacion 1");
+                    calf = new Scanner(System.in).nextDouble();
+                    m.setCalificacion3(calf);
+                    //
+                    do {
+                        System.out.println("Agregar Tarea (presione solo el 0 para parar)");
+                        tarea = new Scanner(System.in).next();
+                        m.setTareas(tarea);
+                    } while (!tarea.equalsIgnoreCase("0"));
+
+                    ListaMaterias.add(m);
+                    break;
+                case 2:
+                    Funciones.ImprimirHorario(ListaMaterias);
+                    break;
+                case 3:
+                    System.out.println("Ingresar Nombre de la materia");
+                    String nom = new Scanner(System.in).next();
+                    Funciones.BuscarXNombre(ListaMaterias, nom);
+                    break;
+                case 4:
+                    System.out.println("Ingresar Dia");
+                    String d = new Scanner(System.in).next();
+                    Funciones.BuscarXDia(ListaMaterias, d);
+                    break;
+                case 5:
+                    System.out.println("Ingresar Nombre de la materia");
+                    String mat = new Scanner(System.in).next();
+                    Funciones.ImprimirTareas(ListaMaterias, mat);
+                    break;
+                case 6:
+                    System.out.println("Salida exitosa");
+                default:
+                    System.out.println("Opcion no valida");
+
+            }
+        } while (opc != 6);
+
+        for (int i = 0; i < ListaMaterias.size(); i++) {
+            System.out.println(ListaMaterias.get(i).toString());
+            System.out.println("");
+        }
+    }
+}
